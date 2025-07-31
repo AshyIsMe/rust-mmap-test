@@ -166,17 +166,21 @@ fn sum_numbers(mmap_vec: &MmapVec<i64>) -> Result<i128, Box<dyn std::error::Erro
     let mut sum: i128 = 0;
     let len = mmap_vec.len();
 
-    for i in 0..len {
-        sum = sum.wrapping_add(mmap_vec[i] as i128);
+    // for i in 0..len {
+    //     sum = sum.wrapping_add(mmap_vec[i] as i128);
 
-        // // Progress indicator for every 10M numbers
-        // if i % 10_000_000 == 0 && i > 0 {
-        //     let progress = (i as f64 / len as f64) * 100.0;
-        //     println!("  Progress: {:.1}% ({}/{})", progress, i, len);
-        // }
-    }
+    //     // // Progress indicator for every 10M numbers
+    //     // if i % 10_000_000 == 0 && i > 0 {
+    //     //     let progress = (i as f64 / len as f64) * 100.0;
+    //     //     println!("  Progress: {:.1}% ({}/{})", progress, i, len);
+    //     // }
+    // }
+    
+    // let sum = mmap_vec.iter().map(|&x| x as i128).sum();
 
-    Ok(sum)
+    let sum : i64= mmap_vec.iter().map(|&x| x).sum();
+
+    Ok(sum as i128)
 }
 
 fn create_vec() -> Vec<i64> {
@@ -202,15 +206,17 @@ fn sum_numbers_vec(vec: &Vec<i64>) -> i128 {
     let mut sum: i128 = 0;
     let len = vec.len();
 
-    for i in 0..len {
-        sum = sum.wrapping_add(vec[i] as i128);
+    // for i in 0..len {
+    //     sum = sum.wrapping_add(vec[i] as i128);
 
-        // // Progress indicator for every 10M numbers
-        // if i % 10_000_000 == 0 && i > 0 {
-        //     let progress = (i as f64 / len as f64) * 100.0;
-        //     println!("  Progress: {:.1}% ({}/{})", progress, i, len);
-        // }
-    }
+    //     // // Progress indicator for every 10M numbers
+    //     // if i % 10_000_000 == 0 && i > 0 {
+    //     //     let progress = (i as f64 / len as f64) * 100.0;
+    //     //     println!("  Progress: {:.1}% ({}/{})", progress, i, len);
+    //     // }
+    // }
+    
+    let sum : i64= vec.iter().map(|&x| x).sum();
 
-    sum
+    sum as i128
 }
